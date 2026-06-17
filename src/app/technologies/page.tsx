@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Metadata } from "next";
+import { FaLaptopCode, FaCog, FaMobileAlt, FaDatabase, FaWordpress } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "Technologies We Use",
@@ -17,7 +18,7 @@ const techCategories = [
       { name: "Tailwind CSS", desc: "Premium styling utilities" },
       { name: "TypeScript", desc: "Robust bug-free code logic" },
     ],
-    icon: "💻",
+    Icon: FaLaptopCode,
   },
   {
     title: "Backend Services",
@@ -28,7 +29,7 @@ const techCategories = [
       { name: "Laravel", desc: "Elegant MVC API framework" },
       { name: "Express.js", desc: "Minimalist Node framework" },
     ],
-    icon: "⚙️",
+    Icon: FaCog,
   },
   {
     title: "Mobile App Development",
@@ -37,7 +38,7 @@ const techCategories = [
       { name: "Flutter", desc: "High-fidelity canvas painting" },
       { name: "React Native", desc: "Native JS components bridges" },
     ],
-    icon: "📱",
+    Icon: FaMobileAlt,
   },
   {
     title: "Databases & Caching",
@@ -47,7 +48,7 @@ const techCategories = [
       { name: "MongoDB", desc: "NoSQL flexible user documents" },
       { name: "PostgreSQL", desc: "Advanced enterprise scaling" },
     ],
-    icon: "🗄️",
+    Icon: FaDatabase,
   },
   {
     title: "CMS & Platforms",
@@ -56,7 +57,7 @@ const techCategories = [
       { name: "WordPress", desc: "Flexible corporate portals" },
       { name: "Shopify", desc: "Scalable e-commerce stores" },
     ],
-    icon: "🔌",
+    Icon: FaWordpress,
   },
 ];
 
@@ -90,7 +91,9 @@ export default function TechnologiesPage() {
               {/* Left Column: Category Description */}
               <div className="lg:col-span-4 flex flex-col gap-3">
                 <div className="flex items-center gap-3">
-                  <span className="text-3xl">{cat.icon}</span>
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                    <cat.Icon className="w-5 h-5" />
+                  </div>
                   <h2 className="text-xl font-bold text-slate-900">{cat.title}</h2>
                 </div>
                 <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mt-1">{cat.desc}</p>

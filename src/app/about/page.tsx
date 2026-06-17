@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Metadata } from "next";
+import { FaLightbulb, FaShieldAlt, FaHandshake, FaWrench } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -11,22 +12,22 @@ const values = [
   {
     title: "Innovation First",
     desc: "We stay ahead of the technical curve, utilizing modern frameworks like Next.js, Flutter, and Node.js to provide optimized web and mobile platforms.",
-    icon: "💡",
+    Icon: FaLightbulb,
   },
   {
     title: "Quality Engineering",
     desc: "We write clean, documented, and modular code, running strict QA validation checks before any project goes live.",
-    icon: "🛡️",
+    Icon: FaShieldAlt,
   },
   {
     title: "Transparency & Trust",
     desc: "We believe in direct client communication, providing regular timeline updates, progress logs, and fair pricing.",
-    icon: "🤝",
+    Icon: FaHandshake,
   },
   {
     title: "Lifetime Support",
     desc: "Our collaboration doesn't end at deployment. We offer proactive maintenance and security scaling support.",
-    icon: "🔧",
+    Icon: FaWrench,
   },
 ];
 
@@ -126,8 +127,8 @@ export default function AboutPage() {
                 key={v.title}
                 className="bg-white border border-slate-200/60 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 flex flex-col gap-4"
               >
-                <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-xl font-bold text-blue-600">
-                  {v.icon}
+                <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
+                  <v.Icon className="w-5 h-5" />
                 </div>
                 <h3 className="text-base font-bold text-slate-900">{v.title}</h3>
                 <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">{v.desc}</p>

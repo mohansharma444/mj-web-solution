@@ -25,7 +25,7 @@ export default function TermsConditionsPage() {
       {/* Terms Details */}
       <section className="max-w-3xl mx-auto px-4 sm:px-6 w-full text-slate-700 leading-relaxed text-sm sm:text-base space-y-8">
         <p>
-          Welcome to MJ Web Solution. These terms and conditions outline the rules and regulations for the use of MJ Web Solution's website and development services. By accessing this website or signing a project contract, we assume you accept these terms and conditions.
+          Welcome to MJ Web Solution. These terms and conditions outline the rules and regulations for the use of MJ Web Solution&apos;s website and development services. By accessing this website or signing a project contract, we assume you accept these terms and conditions.
         </p>
 
         <div className="space-y-4">
@@ -46,7 +46,7 @@ export default function TermsConditionsPage() {
           </p>
           <ul className="list-disc pl-5 space-y-1 mt-2">
             <li>The Client gains full ownership of all custom visual assets, text copy, and website databases created specifically for the project.</li>
-            <li>The custom source code (excluding standard frameworks, third-party libraries, and MJ Web Solution's pre-built logic) will be handed over to the client.</li>
+            <li>The custom source code (excluding standard frameworks, third-party libraries, and MJ Web Solution&apos;s pre-built logic) will be handed over to the client.</li>
             <li>MJ Web Solution retains the right to display the completed designs and site link in our agency portfolio.</li>
           </ul>
         </div>

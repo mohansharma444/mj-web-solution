@@ -24,38 +24,27 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 10);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on page transition
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [pathname]);
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-white/95 backdrop-blur-md shadow-md py-3 border-b border-slate-100"
-          : "bg-transparent py-5"
+          : "bg-white/95 backdrop-blur-md shadow-sm py-4"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
-            <Logo
-              textColorClass={isScrolled ? "text-slate-900" : "text-slate-900"}
-              iconSize={42}
-            />
+          <Link href="/" onClick={closeMobileMenu} className="flex-shrink-0">
+            <Logo textColorClass="text-slate-900" iconSize={42} />
           </Link>
 
           {/* Desktop Navigation Links */}
@@ -99,36 +88,12 @@ export default function Navbar() {
             >
               <span className="sr-only">Open main menu</span>
               {isMobileMenuOpen ? (
-                <svg
-                  className="block h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
+                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                <svg
-                  className="block h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
+                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               )}
             </button>
@@ -136,7 +101,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Drawer menu */}
+      {/* Mobile Drawer */}
       <div
         className={`xl:hidden transition-all duration-300 ease-in-out ${
           isMobileMenuOpen
@@ -152,6 +117,7 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
+                onClick={closeMobileMenu}
                 className={`block px-3 py-3 rounded-lg text-base font-semibold transition-colors ${
                   isActive
                     ? "bg-blue-50 text-blue-600 font-bold"
@@ -165,6 +131,7 @@ export default function Navbar() {
           <div className="pt-4 px-3">
             <Link
               href="/contact"
+              onClick={closeMobileMenu}
               className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition-colors shadow-lg shadow-blue-500/10"
             >
               Get a Quote
