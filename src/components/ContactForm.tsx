@@ -104,22 +104,41 @@ export default function ContactForm() {
     setIsSubmitting(true);
 
     // Mock API call to simulate form submission
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      setShowSuccess(true);
-      setFields({
-        name: "",
-        email: "",
-        phone: "",
-        service: "",
-        message: "",
-      });
-      setErrors({});
-    } catch (err) {
-      console.error("Submission failed", err);
-    } finally {
-      setIsSubmitting(false);
-    }
+   try {
+  const whatsappMessage = `
+*New Inquiry - MJ Web Solution*
+
+Name: ${fields.name}
+Phone: ${fields.phone}
+Email: ${fields.email}
+Service: ${fields.service}
+
+Message:
+${fields.message}
+`;
+
+  const whatsappUrl = `https://wa.me/916378695789?text=${encodeURIComponent(
+    whatsappMessage
+  )}`;
+
+  window.open(whatsappUrl, "_blank");
+
+  setShowSuccess(true);
+
+  setFields({
+    name: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
+  });
+
+  setErrors({});
+} catch (err) {
+  console.error("Submission failed", err);
+} finally {
+  setIsSubmitting(false);
+}
   };
 
   return (
